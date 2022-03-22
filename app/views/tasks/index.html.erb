@@ -1,0 +1,22 @@
+<div class="container ">
+  <h1 class="mb-3">All Tasks</h1>
+  <ul class="mb-3">
+  <%@tasks.each do |task|%>
+    <li class="list-group-item">
+      <% if task.completed == true %>
+        <i class="fa-regular fa-square-check"></i>
+        <%= link_to task.title, task_path(task) %>
+      <% else %>
+        <i class="fa-regular fa-square"></i>
+        <%= link_to task.title, task_path(task) %>
+      <%end%>
+      <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure ?" } do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <%end%>
+    </li>
+  <%end%>
+  </ul>
+  <%= link_to new_task_path do %>
+    <button type="button" class="btn btn-primary">Add a new task</button>
+  <%end%>
+</div>
